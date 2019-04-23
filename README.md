@@ -1,20 +1,26 @@
 # Face and Eye detection using OpenCV 
-## GOAL-
-We will see the basics of face detection using Haar Feature-based Cascade Classifiers
-We will extend the same for eye detection etc.
+## GOAL
+Covering basics of face detection using Haar Feature-based Cascade Classifiers
+And extended the same for eye detection etc.
 
 ### Description
 Object Detection using Haar feature-based cascade classifiers is an effective object detection method proposed by [Paul Viola and Michael Jones in their paper, "Rapid Object Detection using a Boosted Cascade of Simple Features](https://pdfs.semanticscholar.org/f63c/fcdd63bd34bcd6ec028169e6fe144e9cc83c.pdf) in 2001. It is a machine learning based approach where a cascade function is trained from a lot of positive and negative images. It is then used to detect objects in other images.
 
 Here we will work with face detection. Initially, the algorithm needs a lot of positive images (images of faces) and negative images (images without faces) to train the classifier. Then we need to extract features from it. For this, Haar features shown in the below image are used. They are just like our convolutional kernel. Each feature is a single value obtained by subtracting sum of pixels under the white rectangle from sum of pixels under the black rectangle.
 
-![alt text][img2]
+![alt text][haar]
+
+[haar]: ./imgs/haar_features_1.jpg
 
 
-[logo]: https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 2"
 Now, all possible sizes and locations of each kernel are used to calculate lots of features. (Just imagine how much computation it needs? Even a 24x24 window results over 160000 features). For each feature calculation, we need to find the sum of the pixels under white and black rectangles. To solve this, they introduced the integral image. However large your image, it reduces the calculations for a given pixel to an operation involving just four pixels. Nice, isn't it? It makes things super-fast.
 
 But among all these features we calculated, most of them are irrelevant. For example, consider the image below. The top row shows two good features. The first feature selected seems to focus on the property that the region of the eyes is often darker than the region of the nose and cheeks. The second feature selected relies on the property that the eyes are darker than the bridge of the nose. But the same windows applied to cheeks or any other place is irrelevant. So how do we select the best features out of 160000+ features? It is achieved by Adaboost.
+
+![alt text][haar2]
+
+
+[haar2]: ./imgs/haar_2.png
 
 
 For this, we apply each and every feature on all the training images. For each feature, it finds the best threshold which will classify the faces to positive and negative. Obviously, there will be errors or misclassifications. We select the features with minimum error rate, which means they are the features that most accurately classify the face and non-face images. (The process is not as simple as this. Each image is given an equal weight in the beginning. After each classification, weights of misclassified images are increased. Then the same process is done. New error rates are calculated. Also new weights. The process is continued until the required accuracy or error rate is achieved or the required number of features are found).
@@ -31,13 +37,33 @@ The authors' detector had 6000+ features with 38 stages with 1, 10, 25, 25 and 5
 
 So this is a simple intuitive explanation of how Viola-Jones face detection works. Read the paper for more details or check out the references in the Additional Resources section.
 
+## My output
 
-### Programing Language Used: Python
-### Tools used : Numpy, pandas, matplotlib, OpenCV 2 
-
-
+![alt text][out]
 
 
+[out]: ./imgs/out.png
+
+## Results
+
+I have to check why my program is unable to detect the other eye. 
+
+### Programing Language Used: 
+- Python
+### Tools used : 
+- Numpy
+- Pandas
+- Matplotlib
+- OpenCV2 
+
+### Steps to run my project
+
+- Download or clone this project
+- Check respective documentations for installing [pandas](https://pandas.pydata.org/pandas-docs/stable/install.html), [NumPy](https://docs.scipy.org/doc/numpy/user/install.html), [opencv](https://pypi.org/project/opencv-python/) using pycharm
+- All you have to do is run this [Face_and_Eye_Detection.py ](./Face_and_Eye_Detection.py) file. 
 
 
 ## Rerences :
+
+- [Udemy](https://www.udemy.com/master-computer-vision-with-opencv-in-python/learn/v4/t/lecture/5860732?start=0)
+- [ Viola and Jones Paper on Face Detection ](https://pdfs.semanticscholar.org/f63c/fcdd63bd34bcd6ec028169e6fe144e9cc83c.pdf)
