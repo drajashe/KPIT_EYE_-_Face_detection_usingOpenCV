@@ -4,7 +4,7 @@ Covering basics of face detection using Haar Feature-based Cascade Classifiers
 And extended the same for eye detection etc.
 
 ### Description
-Object Detection using Haar feature-based cascade classifiers is an effective object detection method proposed by [Paul Viola and Michael Jones in their paper, "Rapid Object Detection using a Boosted Cascade of Simple Features](https://pdfs.semanticscholar.org/f63c/fcdd63bd34bcd6ec028169e6fe144e9cc83c.pdf) in 2001. It is a machine learning based approach where a cascade function is trained from a lot of positive and negative images. It is then used to detect objects in other images.
+Object Detection using Haar feature-based cascade classifiers is an effective object detection method proposed by [Paul Viola and Michael Jones in their paper, "Rapid Object Detection using a Boosted Cascade of Simple Features](https://www.cs.cmu.edu/~efros/courses/LBMV07/Papers/viola-cvpr-01.pdf) in 2001. It is a machine learning based approach where a cascade function is trained from a lot of positive and negative images. It is then used to detect objects in other images.
 
 Here we will work with face detection. Initially, the algorithm needs a lot of positive images (images of faces) and negative images (images without faces) to train the classifier. Then we need to extract features from it. For this, Haar features shown in the below image are used. They are just like our convolutional kernel. Each feature is a single value obtained by subtracting sum of pixels under the white rectangle from sum of pixels under the black rectangle.
 
@@ -66,4 +66,4 @@ I have to check why my program is unable to detect the other eye.
 ## Rerences :
 
 - [Udemy](https://www.udemy.com/master-computer-vision-with-opencv-in-python/learn/v4/t/lecture/5860732?start=0)
-- [ Viola and Jones Paper on Face Detection ](https://pdfs.semanticscholar.org/f63c/fcdd63bd34bcd6ec028169e6fe144e9cc83c.pdf)
+- [ Viola and Jones Paper on Face Detection ](https://www.cs.cmu.edu/~efros/courses/LBMV07/Papers/viola-cvpr-01.pdf)
