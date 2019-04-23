@@ -45,8 +45,7 @@ So this is a simple intuitive explanation of how Viola-Jones face detection work
 [out]: ./imgs/out.png
 
 ## Results
-
-I have to check why my program is unable to detect the other eye. 
+Was able to detect face and eyes.
 
 ### Programing Language Used: 
 - Python
