@@ -59,7 +59,7 @@ I have to check why my program is unable to detect the other eye.
 ### Steps to run my project
 
 - Download or clone this project
-- Check respective documentations for installing [pandas](https://pandas.pydata.org/pandas-docs/stable/install.html), [NumPy](https://docs.scipy.org/doc/numpy/user/install.html), [opencv](https://pypi.org/project/opencv-python/) using pycharm
+- Check respective documentations for installing [pandas](https://pandas.pydata.org/pandas-docs/stable/install.html), [NumPy](https://docs.scipy.org/doc/numpy/user/install.html), [OpenCV2](https://pypi.org/project/opencv-python/) using pycharm
 - All you have to do is run this [Face_and_Eye_Detection.py ](./Face_and_Eye_Detection.py) file. 
 
 
