@@ -19,6 +19,23 @@ Numerically, they might look something like this:
 
 [haarnum]: ./imgs/haar_num.png
 
+As explained here, each the 3x3 kernel moves across the image and does matrix multiplication with every 3x3 part of the image, emphasizing some features and smoothing others.
+
+Haar-Features are good at detecting edges and lines. This makes it especial effective in face detection. 
+
+However, because Haar Features have to be determined manually, there is a certain limit to the types of things it can detect. If you give classifier (a network, or any algorithm that detects faces) edge and line features, then it will only be able to detect objects with clear edges and lines. Even as a face detector, if we manipulate the face a bit (say, cover up the eyes with sunglasses, or tilt the head to a side), a Haar-based classifier may not be able to recognize the face. A convolutional kernel, on the other hand, has a higher degree of freedom (since it’s determined by training), and could be able to recognize partially covered faces (depending on the quality of the training data).
+
+On the plus side, because we don’t need to train Haar-Features, we can create a classifier with a relatively small dataset. All we have to do is train the weightings for each feature (i.e. which Haar-feature should be used more?) which allows us to train the classifier well without a lot of training images. In addition, it also has a higher execution speed, as Haar-based classifiers typically involve less computations.
+
+What triggered this small investigation into Haar-based classifiers is this model that recognizes emotions. Last year, at a fair, I came across a emotion recognition system. However, it didn’t use neural networks. I was curious if I could find a emotion recognition algorithm based completely on CNNs.
+
+Taking a brief look into this model, I saw that it used OpenCV’s Haar-based cascade classifier to detect faces. After finding faces, the team then trained their own CNN to recognize the emotion on the face.
+
+Because it used a Haar-based classifier, I couldn’t really call it an algorithm based completely on convolutional neural networks. What if I switched out the Haar-based classifier for the MTCNN face recognition system?
+
+Originally, it loaded a Haar-based classifier. I switched it out for an MTCNN detector:
+(Check this link)[https://towardsdatascience.com/whats-the-difference-between-haar-feature-classifiers-and-convolutional-neural-networks-ce6828343aeb]
+
 Now, all possible sizes and locations of each kernel are used to calculate lots of features. (Just imagine how much computation it needs? Even a 24x24 window results over 160000 features). For each feature calculation, we need to find the sum of the pixels under white and black rectangles. To solve this, they introduced the integral image. However large your image, it reduces the calculations for a given pixel to an operation involving just four pixels. Nice, isn't it? It makes things super-fast.
 
 But among all these features we calculated, most of them are irrelevant. For example, consider the image below. The top row shows two good features. The first feature selected seems to focus on the property that the region of the eyes is often darker than the region of the nose and cheeks. The second feature selected relies on the property that the eyes are darker than the bridge of the nose. But the same windows applied to cheeks or any other place is irrelevant. So how do we select the best features out of 160000+ features? It is achieved by Adaboost.
