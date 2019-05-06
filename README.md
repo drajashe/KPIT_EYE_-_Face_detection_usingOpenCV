@@ -24,6 +24,14 @@ But among all these features we calculated, most of them are irrelevant. For exa
 
 [haar2]: ./imgs/haar_2.png
 
+Numerically, they might look something like this:
+![alt text][haarnum]
+
+
+[haar2]: ./imgs/haar_num.png
+
+
+
 
 For this, we apply each and every feature on all the training images. For each feature, it finds the best threshold which will classify the faces to positive and negative. Obviously, there will be errors or misclassifications. We select the features with minimum error rate, which means they are the features that most accurately classify the face and non-face images. (The process is not as simple as this. Each image is given an equal weight in the beginning. After each classification, weights of misclassified images are increased. Then the same process is done. New error rates are calculated. Also new weights. The process is continued until the required accuracy or error rate is achieved or the required number of features are found).
 
