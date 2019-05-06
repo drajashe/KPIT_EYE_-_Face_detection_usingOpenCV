@@ -13,7 +13,11 @@ Here we will work with face detection. Initially, the algorithm needs a lot of p
 ![alt text][haar]
 
 [haar]: ./imgs/haar_features_1.jpg
+Numerically, they might look something like this:
+![alt text][haarnum]
 
+
+[haarnum]: ./imgs/haar_num.png
 
 Now, all possible sizes and locations of each kernel are used to calculate lots of features. (Just imagine how much computation it needs? Even a 24x24 window results over 160000 features). For each feature calculation, we need to find the sum of the pixels under white and black rectangles. To solve this, they introduced the integral image. However large your image, it reduces the calculations for a given pixel to an operation involving just four pixels. Nice, isn't it? It makes things super-fast.
 
@@ -23,13 +27,6 @@ But among all these features we calculated, most of them are irrelevant. For exa
 
 
 [haar2]: ./imgs/haar_2.png
-
-Numerically, they might look something like this:
-![alt text][haarnum]
-
-
-[haar2]: ./imgs/haar_num.png
-
 
 
 
