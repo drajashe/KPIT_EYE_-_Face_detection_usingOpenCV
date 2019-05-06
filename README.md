@@ -75,4 +75,4 @@ Was able to detect face and eyes.
 ## Rerences :
 
 - [Udemy](https://www.udemy.com/master-computer-vision-with-opencv-in-python/learn/v4/t/lecture/5860732?start=0)
-- [ Viola and Jones Paper on Face Detection ](https://www.cs.cmu.edu/~efros/courses/LBMV07/Papers/viola-cvpr-01.pdf)
+- [ Viola and Jones Paper on Face Detection ](https://www.cs.cmu.edu/~efros/courses/LBMV07/Papers/viola-cvpr-01.pdf) 
